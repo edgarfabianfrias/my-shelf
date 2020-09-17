@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        
+        
+        .bg{
+            background: repeating-linear-gradient(
+            90deg,
+            #606dbc,
+            #606dbc 20px,
+            #465298 20px,
+            #465298 40px
+            );
+            height:1000px;
+        }
+
+        .freak,.cyclops, .dog, .onion{
+            width: 100px;
+            height: 100px;
+            margin: 80px;
+            display: inline;
+            left: 60%;
+        }
+
+
+
+        /*button:hover {
+            background-color: darkgray;
+        }*/
+
+        /*  vvvvv from stackoverflow, because screw anti-aliasing vvvvv  */
+        img { 
+            image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+            image-rendering: -moz-crisp-edges;          /* Firefox                        */
+            image-rendering: -o-crisp-edges;            /* Opera                          */
+            image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+            image-rendering: pixelated; /* Chrome */
+            image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+            -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+        }
+        /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+    </style>
+
+    <script src="libs/howler.js"></script>
+
+    <title>My Shelf</title>
+</head>
+<body>
+
+    <!--<div class="container">
+       <div class="button" onclick="playSound(sound0)"></div>
+       <div class="button" onclick="playSound(sound1)"></div>
+       <div class="button" onclick="playSound(sound2)"></div>
+       <div class="button" onclick="playSound(sound3)"></div>
+    </div>-->
+    <div class="bg">
+        <div class="container">
+            <div class="freak" onclick="playSqueak(sound0,2,'img/freak-squish.png','img/freak.png')">
+                    <img id="freakimg" src="img/freak.png">
+            </div>
+            <div class="cyclops" onclick="playSqueak(sound0,0,'img/cyclops-squish.png','img/cyclops.png')">
+                <img id="cyclopsimg" src="img/cyclops.png">
+            </div>
+            <div class="dog" onclick="playSqueak(sound0,1,'img/dog-squish.png','img/dog.png')">
+                    <img id="dogimg" src="img/dog.png">
+            </div>
+            <div class="onion" onclick="playSqueak(sound0,3,'img/onion-squish.png','img/onion.png')">
+                    <img id="onionimg" src="img/onion.png">
+            </div>
+        </div>
+        <img src="img/shelf.png" alt="shelf">
+    </div>
+    
+
+</body>
+
+<script>
+const sound0 = new Howl({ src: 'sounds/squeak.mp3' });
+
+const Images = [
+            document.getElementById('cyclopsimg'),
+            document.getElementById('dogimg'),
+            document.getElementById('freakimg'),
+            document.getElementById('onionimg'),
+        ];
+console.log(sound0);
+const playSqueak = (sound,imgIndex,imgName, defaultImg) => {
+    sound.play();
+    Images[imgIndex].src = imgName;
+    setTimeout(()=>returnDefault(imgIndex, defaultImg), 400);
+}
+const returnDefault = (imgIndex, defaultImg) => {
+    Images[imgIndex].src = defaultImg;
+}
+
+</script>
+</html>
