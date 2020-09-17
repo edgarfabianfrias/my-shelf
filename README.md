@@ -1,3 +1,8 @@
-# in-class sampler project scaffold
+# you have discovered my shelf
 
-including howler.js
+enjoy my various items
+
+
+
+
+###including howler.js
